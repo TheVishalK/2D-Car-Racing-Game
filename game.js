@@ -47,6 +47,14 @@ function drawCar() {
     ctx.fillStyle = "red";
     ctx.fillRect(carX, carY, carWidth, carHeight);
 }
+
+function drawOtherCars() {
+    ctx.fillStyle = "blue";
+    otherCars.forEach(car => {
+      ctx.fillRect(car.x, car.y, otherCarWidth, otherCarHeight);
+    });
+  }
+  
 function drawRoad() {
     ctx.fillStyle = "#222";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -70,10 +78,31 @@ function drawRoad() {
     }
   }
 
+  function generateOtherCars() {
+    if (Math.random() < 0.02) {
+      const x = Math.random() * (canvas.width - otherCarWidth);
+      const y = -otherCarHeight;
+      otherCars.push({ x, y });
+    }
+  }
+  
+  function moveOtherCars() {
+    otherCars.forEach((car, index) => {
+      car.y += 3;  // Speed of other cars
+      if (car.y > canvas.height) {
+        otherCars.splice(index, 1); // Remove car when it goes off-screen
+        score += 10; // Increase score for avoiding a car
+      }
+    });
+  }
+
 function gameLoop() {
     drawRoad();
     drawCar();
+    drawOtherCars();
     moveCar();
+    generateOtherCars();
+    moveOtherCars();
     requestAnimationFrame(gameLoop); // Continue the game loop
   }
   gameLoop();
