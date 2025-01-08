@@ -111,8 +111,16 @@ function drawRoad() {
       ) {
         // collision happens
         alert("Game Over! Final Score: " + score);
+        resetGame();
       }
     }
+  }
+
+  function resetGame() {
+    carX = canvas.width / 2 - carWidth / 2;
+    carY = canvas.height - carHeight - 10;
+    otherCars.length = 0;
+    score = 0;
   }
 
 function gameLoop() {
