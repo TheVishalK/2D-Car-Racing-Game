@@ -38,4 +38,18 @@ function drawCar() {
     ctx.fillStyle = "red";
     ctx.fillRect(carX, carY, carWidth, carHeight);
 }
+function drawRoad() {
+    ctx.fillStyle = "#222";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+    // Draw dashed line in the middle of the road
+    ctx.strokeStyle = "#fff";
+    ctx.lineWidth = 4;
+    ctx.setLineDash([20, 15]);
+    ctx.beginPath();
+    ctx.moveTo(canvas.width / 2, 0);
+    ctx.lineTo(canvas.width / 2, canvas.height);
+    ctx.stroke();
+  }
+drawRoad();
 drawCar();
