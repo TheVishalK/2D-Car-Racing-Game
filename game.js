@@ -34,6 +34,15 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+document.addEventListener("keyup", (event) => {
+    if (event.key === "ArrowLeft") {
+      moveLeft = false;
+    }
+    if (event.key === "ArrowRight") {
+      moveRight = false;
+    }
+  });
+
 function drawCar() {
     ctx.fillStyle = "red";
     ctx.fillRect(carX, carY, carWidth, carHeight);
@@ -51,5 +60,20 @@ function drawRoad() {
     ctx.lineTo(canvas.width / 2, canvas.height);
     ctx.stroke();
   }
-drawRoad();
-drawCar();
+
+  function moveCar() {
+    if (moveLeft) {
+      carX -= carSpeed;
+    }
+    if (moveRight) {
+      carX += carSpeed;
+    }
+  }
+
+function gameLoop() {
+    drawRoad();
+    drawCar();
+    moveCar();
+    requestAnimationFrame(gameLoop); // Continue the game loop
+  }
+  gameLoop();
