@@ -5,8 +5,21 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+let score = 0;
+// Car variables
+const carWidth = 50;
+const carHeight = 100;
+let carX = canvas.width / 2 - carWidth / 2;
+let carY = canvas.height - carHeight - 10;
+let carSpeed = 5;
+
+// Other cars variables
+const otherCars = [];
+const otherCarWidth = 50;
+const otherCarHeight = 100;
+
 function drawCar() {
     ctx.fillStyle = "red";
-    ctx.fillRect(0, 0, 40, 100);
+    ctx.fillRect(carX, carY, carWidth, carHeight);
 }
 drawCar();
