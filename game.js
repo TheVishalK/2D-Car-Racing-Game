@@ -62,11 +62,11 @@ function drawRoad() {
   }
 
   function moveCar() {
-    if (moveLeft) {
-      carX -= carSpeed;
+    if (moveLeft && carX > 0) {
+        carX -= carSpeed;
     }
-    if (moveRight) {
-      carX += carSpeed;
+    if (moveRight && carX < canvas.width - carWidth) {
+        carX += carSpeed;
     }
   }
 
