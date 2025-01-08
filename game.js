@@ -54,7 +54,7 @@ function drawOtherCars() {
       ctx.fillRect(car.x, car.y, otherCarWidth, otherCarHeight);
     });
   }
-  
+
 function drawRoad() {
     ctx.fillStyle = "#222";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -96,6 +96,10 @@ function drawRoad() {
     });
   }
 
+  function updateScore() {
+    document.getElementById("score").innerText = "Score: " + score;
+  }
+
 function gameLoop() {
     drawRoad();
     drawCar();
@@ -103,6 +107,7 @@ function gameLoop() {
     moveCar();
     generateOtherCars();
     moveOtherCars();
+    updateScore();
     requestAnimationFrame(gameLoop); // Continue the game loop
   }
   gameLoop();
