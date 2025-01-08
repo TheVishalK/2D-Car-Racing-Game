@@ -18,6 +18,22 @@ const otherCars = [];
 const otherCarWidth = 50;
 const otherCarHeight = 100;
 
+// Key press detection
+let moveLeft = false;
+let moveRight = false;
+
+// Event listeners for moving the car
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      moveLeft = true;
+      console.log("Moving Left");
+    }
+    if (event.key === "ArrowRight") {
+      moveRight = true;
+      console.log("Moving Right");
+    }
+});
+
 function drawCar() {
     ctx.fillStyle = "red";
     ctx.fillRect(carX, carY, carWidth, carHeight);
