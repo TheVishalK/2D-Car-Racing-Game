@@ -100,6 +100,21 @@ function drawRoad() {
     document.getElementById("score").innerText = "Score: " + score;
   }
 
+  function checkCollision() {
+    for (let i = 0; i < otherCars.length; i++) {
+      const car = otherCars[i];
+      if (
+        car.x < carX + carWidth &&
+        car.x + otherCarWidth > carX &&
+        car.y < carY + carHeight &&
+        car.y + otherCarHeight > carY
+      ) {
+        // collision happens
+        alert("Game Over! Final Score: " + score);
+      }
+    }
+  }
+
 function gameLoop() {
     drawRoad();
     drawCar();
@@ -108,6 +123,7 @@ function gameLoop() {
     generateOtherCars();
     moveOtherCars();
     updateScore();
+    checkCollision();
     requestAnimationFrame(gameLoop); // Continue the game loop
   }
   gameLoop();
