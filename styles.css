@@ -15,6 +15,7 @@
   
   .game-container {
     position: relative;
+    overflow: hidden;
   }
   
   #gameCanvas {
